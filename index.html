@@ -32,19 +32,19 @@
 				<section class="columns clearfix">
 					<div class="column">
 						<nav class="codrops-demos">
-							<a class="current-demo" href="index.html">Lazy Stretch</a>
-							<a href="index2.html">Circle</a>
-							<a href="index3.html">Spill</a>
-							<a href="index4.html">Frame it</a>
-							<a href="index5.html">Tunnel vision</a>
-							<a href="index6.html">Windscreen wiper</a>
-							<a href="index7.html">Jammed blind</a>
-							<a href="index8.html">Parallelogram</a>
-							<a href="index9.html">Tilted</a>
-							<a href="index10.html">Lateral Swipe</a>
-							<a href="index11.html">Wave</a>
-							<a href="index12.html">Origami</a>
-							<a href="index13.html">Curtain</a>
+							<a data-effect="lazyStretch" href="index.html" class="current-demo">Lazy Stretch</a>
+							<a data-effect="circle" href="index2.html">Circle</a>
+							<a data-effect="spill" href="index3.html">Spill</a>
+							<a data-effect="frameIt" href="index4.html">Frame it</a>
+							<a data-effect="tunnelVision" href="index5.html">Tunnel vision</a>
+							<a data-effect="windscreenWiper" href="index6.html">Windscreen wiper</a>
+							<a data-effect="jammedBlind" href="index7.html">Jammed blind</a>
+							<a data-effect="parallelogram" href="index8.html">Parallelogram</a>
+							<a data-effect="tilted" href="index9.html">Tilted</a>
+							<a data-effect="lateralSwipe" href="index10.html">Lateral Swipe</a>
+							<a data-effect="wave" href="index11.html">Wave</a>
+							<a data-effect="origami" href="index12.html">Origami</a>
+							<a data-effect="curtain" href="index13.html">Curtain</a>
 						</nav>
 					</div>
 					<div class="column">
@@ -78,39 +78,43 @@
 				</section>
 			</div><!-- /container -->
 
-			<div id="loader" class="pageload-overlay" data-opening="M20,15 50,30 50,30 30,30 Z;M0,0 80,0 50,30 20,45 Z;M0,0 80,0 60,45 0,60 Z;M0,0 80,0 80,60 0,60 Z" data-closing="M0,0 80,0 60,45 0,60 Z;M0,0 80,0 50,30 20,45 Z;M20,15 50,30 50,30 30,30 Z;M30,30 50,30 50,30 30,30 Z">
-				<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="none">
-					<path d="M30,30 50,30 50,30 30,30 Z"/>
-				</svg>
+			<div id="loader" class="pageload-overlay" >
 			</div><!-- /pageload-overlay -->
 			
 		</div><!-- /pagewrap -->
-		<script src="js/classie.js"></script>
-		<script src="js/svgLoader.js"></script>
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/jquery.loadingEffects.js"></script>
 		<script>
+			pageWrap = document.getElementById( 'pagewrap' );
+			pages = [].slice.call( pageWrap.querySelectorAll( 'div.container' ) );
+			currentPage = 0;
+			effect = 'lazyStretch';
+			$loader = $('#loader').loadingEffect({effect: effect});
 			(function() {
-				var pageWrap = document.getElementById( 'pagewrap' ),
-					pages = [].slice.call( pageWrap.querySelectorAll( 'div.container' ) ),
-					currentPage = 0,
-					triggerLoading = [].slice.call( pageWrap.querySelectorAll( 'a.pageload-link' ) ),
-					loader = new SVGLoader( document.getElementById( 'loader' ), { speedIn : 100 } );
 
 				function init() {
-					triggerLoading.forEach( function( trigger ) {
-						trigger.addEventListener( 'click', function( ev ) {
-							ev.preventDefault();
-							loader.show();
+					$('[data-effect]').click(function(e){
+						e.preventDefault();
+						effect = $(this).data('effect');
+						$loader = $('#loader').loadingEffect({effect: effect});
+						$('[data-effect]').removeClass('current-demo');
+						$(this).addClass("current-demo")
+					});
+
+					$( 'a.pageload-link' ).click( function( e ) {
+							e.preventDefault();
+							$('#loader').data('loadingEffect').start();
 							// after some time hide loader
 							setTimeout( function() {
-								loader.hide();
+								$('#loader').data('loadingEffect').end();
 
-								classie.removeClass( pages[ currentPage ], 'show' );
+								$(pages[ currentPage ]).removeClass( 'show' );
 								// update..
 								currentPage = currentPage ? 0 : 1;
-								classie.addClass( pages[ currentPage ], 'show' );
+								$(pages[ currentPage ]).addClass( 'show' );
 
 							}, 2000 );
-						} );
+						
 					} );	
 				}
 
