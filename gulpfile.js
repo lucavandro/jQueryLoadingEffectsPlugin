@@ -41,6 +41,8 @@ gulp.task('copy', function () {
 	gulp.src('loadingEffects.css')
 	.pipe(gulp.dest('example/css'))
 })
+
+gulp.task('dist',['sass', 'concat', 'min', 'copy']);
 gulp.task('dev', function() {
     gulp.watch('sass/*.scss', ['sass']);
 });
