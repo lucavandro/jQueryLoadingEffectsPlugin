@@ -1,15 +1,50 @@
-Page Loading Effects
+jQuery Loading Effects
 =========
 
-Modern ways of revealing new content using SVG animations.
+jQuery plugin to display
 
+
+Setup
+------
+```html
+<html>
+	<head>
+	   ...
+	   <link rel="stylesheet" type="text/css" href="css/loadingEffects.css" />
+	   <script src="js/snap.svg-min.js"></script>
+	   <script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/jquery.loadingEffects.js"></script>
+	</head>
+```
+or
+```html
+<html>
+	<head>
+	   ...
+	   <link rel="stylesheet" type="text/css" href="css/loadingEffects.css" />
+	   <script src="js/snap.svg-min.js"></script>
+	   <script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/jquery.loadingEffects.js"></script>
+		</head>
+```
+
+
+Usage
+--------
+* Markup
+```html
+<div id="loader" class="pageload"></div>
+```
+* js
+```js
+var loadingEffect = $('#loader').loadingEffect('circle').data('loadingEffect');
+loadingEffect.start();
+loadingEffect.end();
+```
+
+Thanks
+==========
 [Article on Codrops](http://tympanus.net/codrops/?p=18880)
 
 [Demo](http://tympanus.net/Development/PageLoadingEffects/)
 
-Integrate or build upon it for free in your personal or commercial projects. Don't republish, redistribute or sell "as-is". 
-
-Read more here: [License](http://tympanus.net/codrops/licensing/)
-
-
-[© Codrops 2014](http://www.codrops.com)
