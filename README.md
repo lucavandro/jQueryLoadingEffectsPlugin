@@ -30,13 +30,31 @@ Usage
 --------
 * Markup
 ```html
-<div id="loader" class="pageload"></div>
+<div id="loader" class="pageload">
+	<div class="pageload-content"> Place your content here.</div>
+</div>
 ```
 * js
 ```js
 var loadingEffect = $('#loader').loadingEffect('circle').data('loadingEffect');
 loadingEffect.start();
 loadingEffect.end();
+```
+
+
+Extras
+-------
+* Vertical center your pageload-content
+```html
+<div id="loader" class="pageload">
+	<div class="pageload-content verical-centered"> Place your content here.</div>
+</div>
+```
+* Add nice animation
+```html
+<div id="loader" class="pageload pageload-dots">
+	<div class="pageload-content"></div>
+</div>
 ```
 
 Thanks
