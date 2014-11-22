@@ -1,7 +1,7 @@
 jQuery Loading Effects
 =========
 
-jQuery plugin to display
+jQuery plugin to display page loading effects based on svg and js.
 
 
 Setup
