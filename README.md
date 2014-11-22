@@ -22,9 +22,8 @@ or
 	<head>
 	   ...
 	   <link rel="stylesheet" type="text/css" href="css/loadingEffects.css" />
-	   <script src="js/snap.svg-min.js"></script>
 	   <script src="js/jquery-1.11.1.min.js"></script>
-		<script src="js/jquery.loadingEffects.js"></script>
+		<script src="js/jquery.loadingEffects.bundle.min.js"></script>
 		</head>
 ```
 
